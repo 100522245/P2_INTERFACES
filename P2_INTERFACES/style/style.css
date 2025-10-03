@@ -234,27 +234,29 @@ main {
 
 .carrusel-contenedor {
   position: relative;
+  overflow: hidden; /* 🔹 Esconde los packs que no estén activos */
+  padding-inline: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-inline: 3rem;
 }
 
 .carrusel-items {
   display: flex;
-  justify-content: center;
+  transition: transform 0.5s ease-in-out; /* 🔹 Suaviza el deslizamiento */
   width: 100%;
 }
 
 .pack {
-  position: relative;
-  width: 100%;
-  max-width: 35rem;
+  position: relative;   /* 👈 NECESARIO */
+  min-width: 100%;
+  flex-shrink: 0;
   height: 17.5rem;
   border-radius: 1.125rem;
   overflow: hidden;
   box-shadow: 0 22px 45px rgba(15, 23, 42, 0.25);
 }
+
 
 .pack img {
   width: 100%;
@@ -331,9 +333,10 @@ main {
   background: rgba(17, 24, 39, 0.65);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 624.9375rem;
+  border-radius: 50%;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+  z-index: 5; /* 👈 asegura que siempre estén por encima de las imágenes */
 }
 
 .carrusel-flecha.izq {
@@ -343,7 +346,6 @@ main {
 .carrusel-flecha.der {
   right: 0.5rem;
 }
-
 /* Grid de experiencias (tarjetas con imagen + texto) */
 .grid-experiencias {
   display: grid;
