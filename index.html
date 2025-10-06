@@ -103,7 +103,7 @@
   const total = document.querySelectorAll(".carrusel-items .pack").length;
 
   let autoScroll; // guardará el intervalo automático
-  let delayReinicio = 5000; // tiempo de espera para reanudar (5s)
+  let delayReinicio = 2000; // tiempo de espera para reanudar (5s)
 
   function mostrarSlide(i) {
     index = (i + total) % total;
@@ -118,7 +118,7 @@
   function iniciarAutoScroll() {
     autoScroll = setInterval(() => {
       pasar(1);
-    }, 10000);
+    }, 2000);
   }
 
   function detenerAutoScroll() {
