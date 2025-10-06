@@ -668,10 +668,14 @@ footer {
   }
 }
 
-
 /* =====================================================
    VERSIÓN A (pantalla de registro)
    ===================================================== */
+
+/* Ajuste global: evita que los bordes cambien el tamaño real */
+* {
+  box-sizing: border-box;
+}
 
 body.versiona-registro main {
   display: flex;
@@ -693,19 +697,34 @@ body.versiona-registro main {
   justify-items: center;
 }
 
+/* ======================
+   Campos de formulario
+   ====================== */
+
 .dos-campos {
   display: flex;
+  gap: 2rem; /* espacio entre las dos columnas */
+  align-items: flex-start; /* mantiene alineado arriba */
   padding: 0.75rem 0.2rem 0.9rem;
+  width: 100%;
 }
 
+/* Cada grupo (input + mensaje debajo) */
+.campo-error {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* ambos ocupan el mismo ancho */
+}
+
+/* Inputs generales */
 .dos-campos input {
   width: 100%;
-  height: 1.75rem;
-  box-sizing: content-box;
+  height: 2.5rem;
   border-radius: 0.45rem;
-  border: 0.1rem solid #919396;
-  font-size: 0.85rem;
+  border: 2px solid #919396; /* mismo grosor siempre */
+  font-size: 0.95rem;
   transition: border-color 0.2s;
+  padding: 0.4rem 0.6rem;
 }
 
 .dos-campos input:focus {
@@ -713,10 +732,25 @@ body.versiona-registro main {
   outline: none;
 }
 
+/* Quita la altura que deformaba los inputs */
 .campo {
   margin: 0.625rem;
-  height: 0.625rem;
+  /* height: 0.625rem;  ← eliminado */
 }
+
+/* Mensajes de error debajo de los inputs */
+.error {
+  display: block;
+  color: red;
+  font-size: 0.9em;
+  line-height: 1.2;
+  min-height: 1.2em; /* reserva espacio aunque no haya texto */
+  margin-top: 0.25rem;
+}
+
+/* ======================
+   Secciones inferiores
+   ====================== */
 
 .fecha {
   display: flex;
@@ -770,21 +804,24 @@ body.versiona-registro main {
   cursor: pointer;
 }
 
-/* Registro: responsive */
 @media (max-width: 768px) {
   body.versiona-registro main {
     flex-direction: column;
   }
+
   .menu_navegacion {
     flex-direction: column;
   }
+
   .tabla-registros {
     flex-direction: column;
   }
+
   .dos-campos {
     flex-direction: row;
     gap: 1rem;
   }
+
   .campo,
   .fecha,
   .subir-imagen,
@@ -792,6 +829,7 @@ body.versiona-registro main {
   .guardar-acceder {
     width: 100%;
   }
+
   .guardar-acceder {
     justify-content: center;
   }
@@ -801,16 +839,20 @@ body.versiona-registro main {
   body.versiona-registro main {
     flex-direction: column;
   }
+
   .menu_navegacion {
     flex-direction: column;
   }
+
   .tabla-registros {
     flex-direction: column;
   }
+
   .dos-campos {
     flex-direction: column;
     gap: 1rem;
   }
+
   .campo,
   .fecha,
   .subir-imagen,
@@ -818,11 +860,11 @@ body.versiona-registro main {
   .guardar-acceder {
     width: 100%;
   }
+
   .guardar-acceder {
     justify-content: center;
   }
 }
-
 
 /* =====================================================
    VERSIÓN B (sesión iniciada / usuario)
