@@ -97,7 +97,7 @@
         </div>
       </section>
 
-<script src="script_index.js"></script>
+
 
 
 
@@ -188,10 +188,10 @@
 
         <form class="inicio_sesion" action="#" method="post" autocomplete="off">
           <label for="email">Usuario</label>
-          <input id="email" name="email" type="email" placeholder="Usuario">
+          <input class="login-usuario" id="email" name="email" type="text" placeholder="Usuario">
 
           <label for="contraseña">Contraseña</label>
-          <input id="contraseña" name="contraseña" type="password" placeholder="Contraseña">
+          <input class="login-password" id="contraseña" name="contraseña" type="password" placeholder="Contraseña">
 
           <label class="recordar" for="recordar">
             <input type="checkbox" id="recordar" name="recordar">
@@ -199,7 +199,7 @@
           </label>
 
           <div class="acciones">
-            <a href="https://www.youtube.com/" class="boton">Iniciar sesión</a>
+            <button type="submit" class="boton">Iniciar sesión</button>
             <a href="./versiona.html" class="boton">Registro</a>
           </div>
         </form>
@@ -248,7 +248,7 @@
 
     <!-- Newsletter debajo de los enlaces -->
     <div class="newsletter">
-      <input type="email" placeholder="tucorreo@electrónico.com">
+      <input type="email" id="newsletter-email" name="email" tucorreo@electrónico.com">
       <button>Suscribirse</button>
     </div>
   </div>
@@ -259,5 +259,6 @@
     <a href="#"><img src="./img/Youtube_logo.png" alt="YouTube"></a>
   </div> 
 </footer>
+<script src="script_index.js"></script>
 </body>
 </html>
