@@ -68,8 +68,11 @@
 
 
               <div class="fecha">
-                <label for="fecha-nacimiento">Fecha de nacimiento</label>
-                <input id="fecha-nacimiento" name="fecha-nacimiento" type="date">
+                <div class="campo-error">
+                  <label for="fecha-nacimiento">Fecha de nacimiento</label>
+                  <input id="fecha-nacimiento" name="fecha-nacimiento" type="date" min="1905-01-01">
+                  <small id="error-fecha" class="error"></small>
+                </div>
               </div>
               
               <div class="dos-campos">
@@ -87,7 +90,8 @@
 
               <div class="subir-imagen">
                 <label for="subir-perfil">Subir imagen de perfil</label>
-                <input id="subir-perfil" type="file">
+                <input id="subir-perfil" type="file" >
+                <small id="error-subir" class="error"></small>
               </div>
 
               <div class="politica-privacidad">
@@ -120,7 +124,7 @@
 
     <!-- Newsletter debajo de los enlaces -->
     <div class="newsletter">
-      <input type="email" placeholder="tucorreo@electrónico.com">
+      <input type="email" id="newsletter-email" name="email" tucorreo@electrónico.com">
       <button>Suscribirse</button>
     </div>
   </div>
