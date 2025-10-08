@@ -21,9 +21,7 @@ const regex_numero_tarjeta = /^(?:\d{13}|\d{15}|\d{16}|\d{19})$/;
 const regex_titular_tarjeta = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\s]{3,}$/;
 const regex_cvv_tarjeta = /^\d{3}$/;
 
-/* ============================
-   EVENTOS EN TIEMPO REAL
-============================ */
+/* EVENTOS */
 
 /* Tipo de tarjeta */
 tipo_tarjeta.addEventListener("change", () => {
@@ -56,9 +54,7 @@ fecha_caducidad.addEventListener("change", () => {
   }
 });
 
-/* ============================
-   VALIDACIÓN AL ENVIAR FORMULARIO
-============================ */
+/* VALIDACIÓN CAMPOS */
 form_registro.addEventListener("submit", (s) => {
   s.preventDefault();
   let valido = true;
@@ -151,18 +147,7 @@ form_registro.addEventListener("submit", (s) => {
 
   /* Resultado final */
   if (valido) {
-    window.alert("LA COMPRA SE HA REALIZADO CORRECTAMENTE");
-    form_registro.reset();
-    // Limpia los bordes
-    [nombre, correo, tipo_tarjeta, numero_tarjeta, titular_tarjeta, fecha_caducidad, cvv_tarjeta].forEach(el => el.style.border = "");
-  } else {
-    mensaje.textContent = "Revisa los campos en rojo";
-    mensaje.style.color = "red";
-  }
-
-  /* Resultado final */
-  if (valido) {
-    window.alert("LA COMPRA SE HA REALIZADO CORRECTAMENTE")
+    window.alert("COMPRA REALIZADA")
     form_registro.reset();
     nombre.style.border = "";
     correo.style.border = "";
