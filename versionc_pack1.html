@@ -63,36 +63,61 @@
     <div class="versionc-der">
         <section class="versionc-C3">
           <h2>Formulario de compra</h2>
-          <form class="formulario-compra" action="#">
+          <form class="formulario-compra" id="formulario-compra" action="#">
             
-            <input class="campo-largo" id="nombre-compra" type="text" placeholder="Nombre completo">
-
-            <input class="campo-largo" id="email-compra" type="email" placeholder="Correo electrónico">          
-
-            <div>
-              <h3>Tipo de tarjeta</h3>
-              <select class="elegir-tipo-tarjeta" name="tipo">
-                  <option value="mastercard">Mastercard</option>
-                  <option value="visa">Visa</option>
-                  <option value="amex">American Express</option>
-              </select>
-            </div>
-
-            <input class="campo-largo" id="numero-tarjeta" inputmode="numeric" pattern="[0-9]*" placeholder="Número de tarjeta">
-            
-            <input class="campo-largo" id="titular-tarjeta" type="text" placeholder="Nombre del titular de la tarjeta">
-           
-            <div class="caducidad-cvv">
-              <div class="caducidad-tarjeta">
-                <label for="fecha-caducidad">Fecha de caducidad (mm/aaaa)</label>
-                <input id="fecha-caducidad" type="month">
+            <div class="campos-compra">
+              <div class="campo-error">
+                <input class="campo-largo" id="nombre-compra" type="text" placeholder="Nombre completo">
+                <small id="error-nombre" class="error"></small>
               </div>
-              <input id="cvv-tarjeta" inputmode="numeric" pattern="[0-9]*" placeholder="Código CVV">
-            </div>
 
-            <div class="comprar-borrar">
-              <input id="comprar" type="submit" value="Comprar">
-              <input id="borrar-compra" type="reset" value="Borrar">
+              <div class="campo-error">
+                <input class="campo-largo" id="email-compra" type="email" placeholder="Correo electrónico">          
+                <small id="error-correo" class="error"></small>
+              </div>
+            
+              <div class="campo-error">
+                <h3>Tipo de tarjeta</h3>
+                <select id="elegir-tipo-tarjeta" class="elegir-tipo-tarjeta" name="tipo">
+                    <option value="seleccionar">--Seleccione--</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="visa">Visa</option>
+                    <option value="amex">American Express</option>
+                </select>
+                <small id="error-tipo-tarjeta" class="error"></small>
+              </div>
+
+              <div class="campo-error">
+                  <input class="campo-largo" id="numero-tarjeta" inputmode="numeric" pattern="[0-9]*" placeholder="Número de tarjeta">          
+                  <small id="error-numero-tarjeta" class="error"></small>
+              </div>
+              
+              <div class="campo-error">
+                <input class="campo-largo" id="titular-tarjeta" type="text" placeholder="Nombre del titular de la tarjeta">
+                <small id="error-titular-tarjeta" class="error"></small>
+              </div>
+
+              <div class="campo-error">
+                <div class="caducidad-cvv">
+                  <div class="caducidad-tarjeta">
+                    <label for="fecha-caducidad">Fecha de caducidad (mm/aaaa)</label>
+                    <input id="fecha-caducidad" type="month">
+                    <small id="error-fecha-caducidad" class="error"></small>
+                  </div>
+                  <div>
+                    <input id="cvv-tarjeta" inputmode="numeric" pattern="[0-9]*" placeholder="Código CVV">
+                    <small id="error-cvv-tarjeta" class="error"></small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="comprar-borrar">
+                <input id="comprar" type="submit" value="Comprar">
+                <input id="borrar-compra" type="reset" value="Borrar">
+              </div>
+
+              <p id="mensaje" class="mensaje-compra"></p>
+
             </div>
 
           </form>
@@ -123,5 +148,6 @@
       <a href="#"><img src="./img/Youtube_logo.png" alt="Youtube_logo"></a>
     </div> 
   </footer>
+  <script src="scriptC.js"></script>
 </body>
 </html>
