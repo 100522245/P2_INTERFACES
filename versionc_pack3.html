@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Compras</title>
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+<body class="versionc">
+  <header>
+    <!-- Nombre a la izquierda -->
+    <a href="./index.html" class="nombre">Mochileros Sin Fronteras</a>
+
+    <!-- Menú en el centro -->
+    <nav class="menu_navegacion">
+      <a href="#">Inicio</a>
+      <a href="#">Experiencias</a>
+      <a href="#">Consejos</a>
+      <a href="#">Foro</a>
+      <a href="#">Contacto</a>
+    </nav>
+
+    <!-- Logo + selector de idioma a la derecha -->
+    <div class="cambiar_idiomas">
+      <img src="./img/logo.png" alt="logo" class="logo">
+      <select name="idiomas">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="ru">RU</option>
+        <option value="zh">ZH</option>
+        <option value="ar">AR</option>
+      </select>
+    </div>
+  </header>
+      
+  <main>
+    <!-- Columna izquierda -->
+    <div class="versionc-izq">
+        <section class="versionc-C1-Atacama">
+            <h2>Pack disponible</h2>
+            <article class="packV2">
+                <div class="packV2_interior">
+                    <div class="titulo_precio">
+                      <h3 class="packV2_titulo">Glamping en Atacama</h3>
+                      <p class="packV2_precio">900 €</p>
+                    </div>
+                    <p class="packV2_desc">Lujo bajo el cielo estrellado</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="versionc-C2">
+            <h2>Descripción del pack</h2>
+            <p>El Pack Aventura en el Himalaya te sumerge en la majestuosidad de las montañas más altas del mundo, ofreciendo una experiencia completa de emoción y seguridad. Incluye todo el equipamiento necesario para enfrentar la alta montaña: ropa técnica impermeable, chaqueta y pantalón, forro polar, guantes y gorro térmico, así como calzado especializado con botas de trekking y crampones según la temporada. También se proporciona equipo de seguridad como casco, arnés, cuerda de escalada y bastones de trekking, junto con mochila, saco de dormir térmico, linterna frontal y botiquín básico, además de accesorios opcionales como gafas de sol de alta protección UV y protector solar.</p>
+
+            <p>El alojamiento está cuidadosamente seleccionado para combinar confort y autenticidad, con estancias en refugios de montaña y lodges locales que ofrecen camas cómodas, mantas térmicas y baños básicos, así como acceso a duchas calientes en algunos puntos del recorrido. Compartir estos espacios con otros aventureros permite vivir la cultura local de manera más cercana, haciendo que cada parada sea parte de la experiencia.</p>
+
+            <p>La aventura se realiza acompañada de guías expertos certificados, con años de experiencia en trekking y escalada en el Himalaya, que proporcionan asistencia en las rutas, técnicas de seguridad y orientación en terrenos difíciles. Además, se encargan del apoyo logístico, incluyendo transporte de equipo, coordinación de refugios y control de altitud, mientras comparten historias, cultura y secretos de la región que enriquecen aún más la travesía. Todo esto permite disfrutar del Himalaya sin preocuparse por la logística o el equipamiento, concentrándose únicamente en vivir una experiencia única e inolvidable.</p>
+        </section>
+    </div>
+
+    <div class="versionc-der">
+        <section class="versionc-C3">
+          <h2>Formulario de compra</h2>
+          <form class="formulario-compra" action="#">
+            
+            <input class="campo-largo" id="nombre-compra" type="text" placeholder="Nombre completo">
+
+            <input class="campo-largo" id="email-compra" type="email" placeholder="Correo electrónico">          
+
+            <div>
+              <h3>Tipo de tarjeta</h3>
+              <select class="elegir-tipo-tarjeta" name="tipo">
+                  <option value="mastercard">Mastercard</option>
+                  <option value="visa">Visa</option>
+                  <option value="amex">American Express</option>
+              </select>
+            </div>
+
+            <input class="campo-largo" id="numero-tarjeta" inputmode="numeric" pattern="[0-9]*" placeholder="Número de tarjeta">
+            
+            <input class="campo-largo" id="titular-tarjeta" type="text" placeholder="Nombre del titular de la tarjeta">
+           
+            <div class="caducidad-cvv">
+              <div class="caducidad-tarjeta">
+                <label for="fecha-caducidad">Fecha de caducidad (mm/aaaa)</label>
+                <input id="fecha-caducidad" type="month">
+              </div>
+              <input id="cvv-tarjeta" inputmode="numeric" pattern="[0-9]*" placeholder="Código CVV">
+            </div>
+
+            <div class="comprar-borrar">
+              <input id="comprar" type="submit" value="Comprar">
+              <input id="borrar-compra" type="reset" value="Borrar">
+            </div>
+
+          </form>
+        </section>
+    </div>
+  </main>
+
+  <footer>
+    <h1 class="footer">&reg; 2025 Mochileros sin Fronteras</h1>
+  
+    <div class="footer-links">
+      <nav class="pie_pag_nav">
+        <a href="#">Sobre nosotros</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Ayuda</a>
+      </nav>
+
+      <!-- Newsletter debajo de los enlaces -->
+      <div class="newsletter">
+        <input type="email" placeholder="tucorreo@electrónico.com">
+        <button>Suscribirse</button>
+      </div>
+    </div>
+  
+    <div class="Redes_sociales">
+      <a href="#"><img src="./img/instagram_logo.png" alt="Instagram_logo"></a>
+      <a href="#"><img src="./img/tiktok_logo.webp" alt="Tiktok_logo"></a>
+      <a href="#"><img src="./img/Youtube_logo.png" alt="Youtube_logo"></a>
+    </div> 
+  </footer>
+</body>
+</html>

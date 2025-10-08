@@ -81,3 +81,8 @@ form_registro.addEventListener("submit", (s) => {
 
 });
 
+
+
+
+
+

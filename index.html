@@ -49,11 +49,11 @@
         <h2>Packs de viaje recomendados</h2>
         <div class="carrusel-contenedor">
           <!-- Flecha izquierda -->
-          <button class="carrusel-flecha izq" aria-label="Anterior">&lt;</button>
+          <button class="carrusel-flecha izq" aria-label="Anterior" id="flechaIzquierda">&lt;</button>
 
           <div class="carrusel-items" id="carrusel-items">
             <!-- Pack 1 -->
-            <div class="pack">
+            <div class="pack" id="pack1">
               <img src="img/AventuraHimalaya.png" alt="Aventura en Himalaya">
               <div class="pack-info">
                 <div class="pack-top">
@@ -66,83 +66,38 @@
             </div>
 
             <!-- Pack 2 -->
-            <div class="pack">
+            <div class="pack" id="pack2">
               <img src="img/serengeti.webp" alt="Safari en Serengeti">
               <div class="pack-info">
                 <div class="pack-top">
                   <div class="pack-titulo">Safari en Serengeti</div>
                   <div class="pack-precio">1200 €</div>
                 </div>
-                <p class="pack-descripcion">La Gran Migración y noches en campamentos.</p>
+                <p class="pack-descripcion">La Gran Migración y noches en campamentos</p>
                 <a href="./versionc_pack2.html" class="pack-boton">Comprar</a>
               </div>
             </div>
 
             <!-- Pack 3 -->
-            <div class="pack">
+            <div class="pack" id="pack3">
               <img src="img/Atacama.jpg" alt="Glamping en Atacama">
               <div class="pack-info">
                 <div class="pack-top">
                   <div class="pack-titulo">Glamping en Atacama</div>
                   <div class="pack-precio">900 €</div>
                 </div>
-                <p class="pack-descripcion">Lujo bajo el cielo estrellado.</p>
+                <p class="pack-descripcion">Lujo bajo el cielo estrellado</p>
                 <a href="./versionc_pack3.html" class="pack-boton">Comprar</a>
               </div>
             </div>
           </div>
 
           <!-- Flecha derecha -->
-          <button class="carrusel-flecha der" aria-label="Siguiente">&gt;</button>
+          <button class="carrusel-flecha der" aria-label="Siguiente" id="flechaDerecha">&gt;</button>
         </div>
       </section>
 
-<script>
-  let index = 0;
-  const carrusel = document.getElementById("carrusel-items");
-  const total = document.querySelectorAll(".carrusel-items .pack").length;
-
-  let autoScroll; // guardará el intervalo automático
-  let delayReinicio = 2000; // tiempo de espera para reanudar (5s)
-
-  function mostrarSlide(i) {
-    index = (i + total) % total;
-    carrusel.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  function pasar(dir) {
-    mostrarSlide(index + dir);
-  }
-
-  // --- AUTO SCROLL ---
-  function iniciarAutoScroll() {
-    autoScroll = setInterval(() => {
-      pasar(1);
-    }, 2000);
-  }
-
-  function detenerAutoScroll() {
-    clearInterval(autoScroll);
-    // reiniciar autoScroll después de X segundos
-    setTimeout(() => {
-      iniciarAutoScroll();
-    }, delayReinicio);
-  }
-
-  // Botones manuales (detienen el autoScroll al usarse)
-  document.querySelector(".carrusel-flecha.izq").addEventListener("click", () => {
-    pasar(-1);
-    detenerAutoScroll();
-  });
-
-  document.querySelector(".carrusel-flecha.der").addEventListener("click", () => {
-    pasar(1);
-    detenerAutoScroll();
-  });
-
-  // Iniciar el carrusel automático al cargar
-  iniciarAutoScroll();
-</script>
+<script src="script_index.js"></script>
 
 
 
