@@ -42,7 +42,7 @@ form_registro.addEventListener("keydown", (evento) => {
 /*Limitar fecha no futura*/
 document.addEventListener("DOMContentLoaded", () => {
   const hoy = new Date().toISOString().slice(0, 10);
-  fecha_nac.max = hoy; // No permitir fechas futuras
+  fecha_nac.max = hoy;
 });
 
 
