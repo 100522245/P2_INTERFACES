@@ -18,7 +18,11 @@ const regex_nombre = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]{3,}$/;
 const regex_apellido = /^(?:[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]{3,})(?:\s+[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]{3,})+$/;;
 const regex_correo = /^(?![.])(?!.*\.\.)[A-Za-z0-9._%+-]+@(?!-)[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,24}$/;
 
-
+form_registro.addEventListener("keydown", (evento) => {
+  if (evento.key === "Enter") {
+    evento.preventDefault();
+  }
+});
 
 form_registro.addEventListener("submit", (s) => {
   s.preventDefault();
