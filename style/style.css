@@ -1094,6 +1094,13 @@ body.versionc main {
   min-height: 100%;
 }
 
+.campos-compra {
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
 .formulario-compra {
   display: flex;
   flex-direction: column;
@@ -1122,11 +1129,9 @@ body.versionc main {
 
 .caducidad-cvv {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-direction: column;
   gap: 2.5rem;
   width: 35%;
-  margin-top: auto;
 }
 
 .caducidad-cvv input {
@@ -1227,6 +1232,26 @@ body.versionc main {
   padding: 0.5rem;
   background-color: rgba(39, 42, 48, 0.8);
   line-height: 1.8;
+}
+
+/* Inputs generales */
+.campos-compra input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 0.45rem;
+  border: 2px solid #919396; /* mismo grosor siempre */
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  padding: 0.4rem 0.6rem;
+}
+
+.campos-compra input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.mensaje-compra {
+  align-self: center;
 }
 
 /* Compra: responsive */

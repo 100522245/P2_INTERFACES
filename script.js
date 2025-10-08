@@ -33,7 +33,11 @@ const regex_correo = /^(?![.])(?!.*\.\.)[A-Za-z0-9._%+-]+@(?!-)[A-Za-z0-9-]+(?:\
 const regex_login = /^[A-Za-z0-9]{5,}$/;
 const regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=<>?{}[\]~])[A-Za-z\d!@#$%^&*()_\-+=<>?{}[\]~]{8,}$/;
 
-
+form_registro.addEventListener("keydown", (evento) => {
+  if (evento.key === "Enter") {
+    evento.preventDefault();
+  }
+});
 
 /*Limitar fecha no futura*/
 document.addEventListener("DOMContentLoaded", () => {
