@@ -2,12 +2,12 @@ let indice = 0;
 let carruselAutomatico = setInterval(moverDerecha, 2000);
 
 function ElegirPack() {
-  // Ocultamos todos los packs
+  /* Ocultamos todos los packs */
   document.getElementById("pack1").style.display = "none";
   document.getElementById("pack2").style.display = "none";
   document.getElementById("pack3").style.display = "none";
 
-  // Mostramos el pack que toca
+  /* Mostramos el pack que toca */
   if (indice == 0) {
     document.getElementById("pack1").style.display = "block";
   } else if (indice == 1) {
@@ -17,6 +17,7 @@ function ElegirPack() {
   }
 }
 
+/* Movemos el carrusel hacia la derecha */
 function moverDerecha () {
   indice = (indice+1) % 3;
   ElegirPack();
@@ -24,6 +25,7 @@ function moverDerecha () {
   carruselAutomatico = setInterval(moverDerecha, 2000);
 }
 
+/* Movemos el carrusel hacia la izquierda */
 function moverIzquierda () {
   indice = (indice-1 + 3) % 3;
   ElegirPack();
@@ -31,14 +33,13 @@ function moverIzquierda () {
   carruselAutomatico = setInterval(moverDerecha, 2000);
 }
 
-
+/* Invocamos los eventos */
 document.getElementById("flechaIzquierda").addEventListener("click", moverIzquierda);
 document.getElementById("flechaDerecha").addEventListener("click", moverDerecha);
 ElegirPack();
 
 
 /* Control del inciio de sesion */
-
 const form_inicio = document.querySelector('.inicio_sesion');
 const usuario_inicio = document.querySelector('.login-usuario');
 const pass_inicio = document.querySelector('.login-password');
