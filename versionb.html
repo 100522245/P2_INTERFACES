@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Sesión Usuario</title>
   <link rel="stylesheet" href="./style/style.css">
+  <script src="scriptB.js" defer></script>
 </head>
 <body class="versionb">
   <header>
@@ -253,6 +254,13 @@
       <a href="#"><img src="./img/Youtube_logo.png" alt="Youtube_logo"></a>
     </div>
   </footer>
-  <script src="scriptB.js"></script>
+
+  <dialog id="cerrar-sesion-ventana" aria-labelledby="cerrar-sesion-titulo" aria-modal="true">
+    <h2 id="cerrar-sesion-titulo">¿Desea cerrar sesión?</h2>
+    <div class="cerrar-acciones">
+      <button type="button" id="cerrar-confirm">Confirmar</button>
+      <button type="button" id="cerrar-cancel">Cancelar</button>
+    </div>
+  </dialog>
 </body>
 </html>
