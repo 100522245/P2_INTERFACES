@@ -1299,3 +1299,68 @@ body.versionc main {
     width: 100%;
   }
 }
+
+
+
+/*Css del boton de cerrar sesión*/
+dialog {
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+}
+
+/* Fondo oscuro al abrir */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Título del diálogo */
+#cerrar-sesion-titulo {
+  margin-bottom: 15px;
+  color: #222;
+  font-size: 1.2rem;
+}
+
+/* Contenedor de botones */
+.cerrar-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Botones básicos */
+#cerrar-confirm,
+#cerrar-cancel {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+/* Botón de confirmar (rojo bonito) */
+#cerrar-confirm {
+  background-color: #ff4d4d;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(255, 77, 77, 0.4);
+}
+#cerrar-confirm:hover {
+  background-color: #e13c3c;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.6);
+}
+
+/* Botón de cancelar (gris suave) */
+#cerrar-cancel {
+  background-color: #ddd;
+  color: #222;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+#cerrar-cancel:hover {
+  background-color: #ccc;
+}

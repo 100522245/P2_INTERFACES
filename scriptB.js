@@ -36,6 +36,98 @@ document.getElementById("flechaIzquierda").addEventListener("click", moverIzquie
 document.getElementById("flechaDerecha").addEventListener("click", moverDerecha);
 ElegirPack();
 
+
+
+
+
+
+
+/*Cerrar sesión*/
+function obtenerUsuario() {
+  /*Se obtiene el usuario activo*/
+  return JSON.parse(localStorage.getItem('usuario'));
+}
+
+function eliminarUsuario() {
+  /*Elimina al usuario activo del local storage*/
+  localStorage.removeItem('usuario');
+}
+
+function irIndex() {
+  /*Esta función redirige a la página principal*/
+  window.location.href = './index.html'
+}
+
+function bloquearScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+function desbloquearScroll() {
+  document.body.style.overflow = '';
+}
+
+function accionCerrarSesion() {
+  /* Se seleccionan los elementos principales del DOM */
+  const cerrar = document.querySelector('.CerrarSesion');              /* Enlace "Cerrar sesión" */
+  const ventana = document.getElementById('cerrar-sesion-ventana');    /* Elemento <dialog> */
+  const botonConfirmar = document.getElementById('cerrar-confirm');    /* Botón de confirmar */
+  const botonCancelar  = document.getElementById('cerrar-cancel');     /* Botón de cancelar */
+
+  /* Al hacer clic en el enlace "Cerrar sesión" se abre la ventana emergente */
+  cerrar.addEventListener('click', (evento) => {
+    evento.preventDefault(); /* Evita que el enlace navegue directamente a otra página */
+    ventana.showModal();     /* Muestra el cuadro de diálogo en el centro de la pantalla */
+    bloquearScroll();  
+  });
+
+  /* Si el usuario pulsa "Cancelar", simplemente se cierra la ventana */
+  botonCancelar.addEventListener('click', () => {
+    ventana.close(); /* Cierra el diálogo sin realizar ninguna acción adicional */
+    desbloquearScroll();
+  });
+
+  /* Si el usuario pulsa "Confirmar", se elimina la sesión y se redirige al inicio */
+  botonConfirmar.addEventListener('click', () => {
+    localStorage.removeItem('usuario'); /* Elimina del almacenamiento local al usuario activo */
+    ventana.close(); 
+    desbloquearScroll();                   /* Cierra la ventana emergente */
+    window.location.href = './index.html'; /* Redirige a la página principal */
+  });
+}
+
+/* Cuando el documento ha terminado de cargarse, se ejecuta la función que conecta los eventos de cierre de sesión. */
+document.addEventListener('DOMContentLoaded', accionCerrarSesion);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const form_registro = document.getElementById("formulario-consejos");
 const titulo = document.getElementById("titulo");
 const descripcion = document.getElementById("descripcion");
