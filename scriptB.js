@@ -99,35 +99,6 @@ function accionCerrarSesion() {
 document.addEventListener('DOMContentLoaded', accionCerrarSesion);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const form_registro = document.getElementById("formulario-consejos");
 const titulo = document.getElementById("titulo");
 const descripcion = document.getElementById("descripcion");
