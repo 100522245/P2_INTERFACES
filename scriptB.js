@@ -134,3 +134,38 @@ form_registro.addEventListener("submit", (e) => {
     descripcion.style.border = "";
   }
 });
+
+
+/* =====================================================
+   MOSTRAR DATOS DEL USUARIO LOGUEADO
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Recuperar usuario activo
+  const usuarioActual = JSON.parse(localStorage.getItem("usuario"));
+
+  if (!usuarioActual) {
+    alert("Debes iniciar sesión o registrarte primero.");
+    window.location.href = "registro.html";
+    return;
+  }
+
+  // Mostrar nombre y apellidos
+  const nombreElemento = document.getElementById("nombre-usuario");
+  if (nombreElemento) {
+    nombreElemento.textContent = usuarioActual.nombre + " " + usuarioActual.apellidos;
+  }
+
+  // Mostrar foto de perfil
+  const imagenElemento = document.getElementById("foto-usuario");
+  if (imagenElemento && usuarioActual.foto_perfil) {
+    imagenElemento.src = usuarioActual.foto_perfil;
+    imagenElemento.alt = `Foto de perfil de ${usuarioActual.nombre}`;
+  }
+
+  // Cerrar sesión
+  document.getElementById("cerrar-sesion").addEventListener("click", () => {
+    localStorage.removeItem("usuario");
+    window.location.href = "registro.html";
+  });
+});
