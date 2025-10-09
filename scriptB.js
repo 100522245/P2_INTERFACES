@@ -2,12 +2,12 @@ let indice = 0;
 let carruselAutomatico = setInterval(moverDerecha, 2000);
 
 function ElegirPack() {
-  // Ocultamos todos los packs
+  /* Ocultamos todos los packs */
   document.getElementById("pack1").style.display = "none";
   document.getElementById("pack2").style.display = "none";
   document.getElementById("pack3").style.display = "none";
 
-  // Mostramos el pack que toca
+  /* Mostramos el pack que toca */
   if (indice == 0) {
     document.getElementById("pack1").style.display = "block";
   } else if (indice == 1) {
@@ -138,17 +138,17 @@ const error_descripcion = document.getElementById("error-descripcion");
 const regex_titulo = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\s]{15,}$/;
 const regex_descripcion = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\s]{30,}$/;
 
-// Mostrar los consejos guardados al cargar la página
-// Mostrar los consejos guardados al cargar la página
+
 document.addEventListener("DOMContentLoaded", () => {
   const consejosGlobales = JSON.parse(localStorage.getItem("consejos_globales")) || [];
   const lista = document.querySelector(".lista_panel");
 
-  // Mostrar los 3 últimos (más recientes primero)
+  /* Mostramos los 3 consejos más recientes */
   consejosGlobales.slice(0, 3).forEach((consejo, index) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
-    // Simulamos que hay una página de detalle del consejo
+
+    /* Al pinchar en el consejo te lleva a una página para leerlo */
     a.href = `consejo${index + 1}.html`;
     a.title = consejo.titulo;
     a.textContent = consejo.titulo;
@@ -163,7 +163,7 @@ form_registro.addEventListener("submit", (e) => {
 
   let valido = true;
 
-  // Validación del título
+  /* Titulo */
   const valor_titulo = titulo.value.trim();
   if (valor_titulo.length < 15) {
     error_titulo.textContent = "Mínimo 15 caracteres";
@@ -174,7 +174,7 @@ form_registro.addEventListener("submit", (e) => {
     titulo.style.border = "2px solid green";
   }
 
-  // Validación de la descripción
+  /* Descripcion */
   const valor_descripcion = descripcion.value.trim();
   if (valor_descripcion.length < 30) {
     error_descripcion.textContent = "Mínimo 30 caracteres";
@@ -186,27 +186,27 @@ form_registro.addEventListener("submit", (e) => {
   }
 
   if (valido) {
-    // Crear nuevo consejo
+    /* Creamos nuevo consejo */
     const nuevoConsejo = {
       titulo: valor_titulo,
       descripcion: valor_descripcion
     };
 
-    // Obtener todos los consejos (simulando global)
+    /* Obtenemos todos los consejos */
     let consejosGlobales = JSON.parse(localStorage.getItem("consejos_globales")) || [];
 
-    // Añadir el nuevo al principio
+    /* Añadimos el nuevo consejo al inicio */
     consejosGlobales.unshift(nuevoConsejo);
 
-    // Mantener solo los 3 últimos
+    /* Mantenemos solo los 3 últimos consejos */
     if (consejosGlobales.length > 3) {
       consejosGlobales = consejosGlobales.slice(0, 3);
     }
 
-    // Guardar en "base de datos" global
+    /* Lo guardamos en la base de datos */
     localStorage.setItem("consejos_globales", JSON.stringify(consejosGlobales));
 
-    // Actualizar lista visual
+    /* Actualizamos lista */
     const lista = document.querySelector(".lista_panel");
     lista.innerHTML = "";
     consejosGlobales.forEach((consejo, index) => {
@@ -219,7 +219,7 @@ form_registro.addEventListener("submit", (e) => {
       lista.appendChild(li);
     });
 
-    // Limpiar formulario
+    /* Limpiamos el form */
     titulo.value = "";
     descripcion.value = "";
     titulo.style.border = "";
@@ -228,21 +228,19 @@ form_registro.addEventListener("submit", (e) => {
 });
 
 
-/* =====================================================
-   MOSTRAR DATOS DEL USUARIO LOGUEADO
-   ===================================================== */
+/* Muestra de datos del usuario correspondiente */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Recuperar usuario activo
   const usuarioActual = JSON.parse(localStorage.getItem("usuario"));
 
-  // Mostrar nombre y apellidos
+  /* Mostramos nombre y apellidos */
   const nombreElemento = document.getElementById("nombre-usuario");
   if (nombreElemento) {
     nombreElemento.textContent = usuarioActual.nombre + " " + usuarioActual.apellidos;
   }
 
-  // Mostrar foto de perfil
+  /* Mostramos foto de perfil */
   const imagenElemento = document.getElementById("foto-usuario");
   if (imagenElemento && usuarioActual.foto_perfil) {
     imagenElemento.src = usuarioActual.foto_perfil;
