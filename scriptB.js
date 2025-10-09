@@ -2,12 +2,12 @@ let indice = 0;
 let carruselAutomatico = setInterval(moverDerecha, 2000);
 
 function ElegirPack() {
-  // Ocultamos todos los packs
+  /* Ocultamos todos los packs */
   document.getElementById("pack1").style.display = "none";
   document.getElementById("pack2").style.display = "none";
   document.getElementById("pack3").style.display = "none";
 
-  // Mostramos el pack que toca
+  /* Mostramos el pack que toca */
   if (indice == 0) {
     document.getElementById("pack1").style.display = "block";
   } else if (indice == 1) {
