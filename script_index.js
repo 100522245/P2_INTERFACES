@@ -1,42 +1,9 @@
-let indice = 0;
-let carruselAutomatico = setInterval(moverDerecha, 2000);
+/* Llamamos a la funcion iniciarCarrusel para ponerlo en marcha */
+import { iniciarCarrusel } from './carrusel.js';
 
-function ElegirPack() {
-  /* Ocultamos todos los packs */
-  document.getElementById("pack1").style.display = "none";
-  document.getElementById("pack2").style.display = "none";
-  document.getElementById("pack3").style.display = "none";
-
-  /* Mostramos el pack que toca */
-  if (indice == 0) {
-    document.getElementById("pack1").style.display = "block";
-  } else if (indice == 1) {
-    document.getElementById("pack2").style.display = "block";
-  } else if (indice == 2) {
-    document.getElementById("pack3").style.display = "block";
-  }
-}
-
-/* Movemos el carrusel hacia la derecha */
-function moverDerecha () {
-  indice = (indice+1) % 3;
-  ElegirPack();
-  clearInterval(carruselAutomatico);
-  carruselAutomatico = setInterval(moverDerecha, 2000);
-}
-
-/* Movemos el carrusel hacia la izquierda */
-function moverIzquierda () {
-  indice = (indice-1 + 3) % 3;
-  ElegirPack();
-  clearInterval(carruselAutomatico);
-  carruselAutomatico = setInterval(moverDerecha, 2000);
-}
-
-/* Invocamos los eventos */
-document.getElementById("flechaIzquierda").addEventListener("click", moverIzquierda);
-document.getElementById("flechaDerecha").addEventListener("click", moverDerecha);
-ElegirPack();
+document.addEventListener("DOMContentLoaded", () => {
+  iniciarCarrusel();
+});
 
 
 /* Control del inciio de sesion */
