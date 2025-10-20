@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/*Cerrar sesión*/
+
+/* CODIGO PARA CERRAR SESION */
+
 function obtenerUsuario() {
   /*Se obtiene el usuario activo*/
   return JSON.parse(localStorage.getItem('usuario'));
@@ -63,19 +65,25 @@ function accionCerrarSesion() {
 document.addEventListener('DOMContentLoaded', accionCerrarSesion);
 
 
-const form_registro = document.getElementById("formulario-consejos");
-const titulo = document.getElementById("titulo");
-const descripcion = document.getElementById("descripcion");
 
-const error_titulo = document.getElementById("error-titulo");
-const error_descripcion = document.getElementById("error-descripcion");
+/* CODIGO PARA ULTIMOS CONSEJOS */
+const form_registro = document.getElementById("formulario-consejos");   /* Formulario */
+const titulo = document.getElementById("titulo");                       /* Titulo */
+const descripcion = document.getElementById("descripcion");             /* Descripcion */
 
+const error_titulo = document.getElementById("error-titulo");           /* Error para el titulo */
+const error_descripcion = document.getElementById("error-descripcion"); /* Error para la descripcion */
+
+/* Regex para las validaciones */
 const regex_titulo = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\s]{15,}$/;
 const regex_descripcion = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ\s]{30,}$/;
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* Cogemos "consejos_globales" del localStorage y, si no existe, creamos uno vacío */
   const consejosGlobales = JSON.parse(localStorage.getItem("consejos_globales")) || [];
+
+  /* Lugar donde guardaremos los elementos <li> */
   const lista = document.querySelector(".lista_panel");
 
   /* Mostramos los 3 consejos más recientes */
@@ -92,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* VALIDACIÓN CAMPOS */
+
+/* Validamos los campos */
 form_registro.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -163,10 +172,11 @@ form_registro.addEventListener("submit", (e) => {
 });
 
 
-/* Muestra de datos del usuario correspondiente */
+
+/* CODIGO PARA DATOS DEL USUARIO */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Recuperar usuario activo
+  /* Recuperar usuario activo */
   const usuarioActual = JSON.parse(localStorage.getItem("usuario"));
 
   /* Mostramos nombre y apellidos */
