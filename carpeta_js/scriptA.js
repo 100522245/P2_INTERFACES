@@ -2,6 +2,8 @@
    VALIDACIÓN FORMULARIO - VERSIÓN A
    ===================================================== */
 
+import { campo_erroneo, campo_correcto, validarCampo } from './validaciones.js';
+
 const form_registro = document.getElementById("form-registro");
 const nombre = document.getElementById("nombre");
 const apellidos = document.getElementById("apellidos");
@@ -75,47 +77,24 @@ form_registro.addEventListener("submit", async (s) => {
   let valido = true;
 
 
-
   /* ---------- Nombre ---------- */
-  const valor_nombre = nombre.value.trim().replace(/\s+/g, " ");
-  if (!regex_nombre.test(valor_nombre)) {
-    error_nombre.textContent = "Mínimo 3 letras sin números";
-    nombre.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_nombre.textContent = "";
-    nombre.style.border = "2px solid green";
-  }
+  if (!validarCampo(regex_nombre, nombre, "Mínimo 3 letras sin números", error_nombre)) {
+      valido = false;
+    }
 
 
   /* ---------- Apellidos ---------- */
-  const valor_apellidos = apellidos.value.trim().replace(/\s+/g, " ");
-  if (!regex_apellido.test(valor_apellidos)) {
-    error_apellidos.textContent = "Mínimo dos palabras y 3 letras cada una";
-    apellidos.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_apellidos.textContent = "";
-    apellidos.style.border = "2px solid green";
-  }
-
-
+  if (!validarCampo(regex_apellido, apellidos, "Mínimo dos palabras y 3 letras cada una", error_apellidos)) {
+      valido = false;
+    }
 
 
   /* ---------- Correo electrónico ---------- */
-  const valor_correo = correo.value.trim().toLowerCase();
-  const valor_conf_correo = conf_correo.value.trim().toLowerCase();
+  if (!validarCampo(regex_correo, correo, "El correo no tiene el formato correcto", error_correo)) {
+      valido = false;
+    }
 
-  if (!regex_correo.test(valor_correo)) {
-    error_correo.textContent = "El correo no tiene el formato correcto";
-    correo.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_correo.textContent = "";
-    correo.style.border = "2px solid green";
-  }
-
-  if (!regex_correo.test(valor_conf_correo) || valor_conf_correo !== valor_correo) {
+  if (!regex_correo.test(conf_correo) || conf_correo !== correo) {
     error_conf_correo.textContent = "Los correos deben coincidir y tener formato correcto";
     conf_correo.style.border = "2px solid red";
     valido = false;
@@ -153,27 +132,16 @@ form_registro.addEventListener("submit", async (s) => {
 
 
   /*Login */
-  const valor_login = login.value.trim();
-  if (!regex_login.test(valor_login)) {
-    error_login.textContent = "El nombre debe tener minimo 5 caracteres";
-    login.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_login.textContent = "";
-    login.style.border = "2px solid green";
-  }
+  if (!validarCampo(regex_login, login, "El nombre debe tener minimo 5 caracteres", error_login)) {
+      valido = false;
+    }
 
 
   /*Password*/
-  const valor_password = password.value.trim();
-  if (!regex_password.test(valor_password)) {
-    error_password.textContent = "8 carac de longitud, con 2 números, 1 especial, 1 mayúscula y 1 minúscula";
-    password.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_password.textContent = "";
-    password.style.border = "2px solid green"
-  }
+  if (!validarCampo(regex_password, password, "8 carac de longitud, con 2 números, 1 especial, 1 mayúscula y 1 minúscula", error_password)) {
+      valido = false;
+    }
+
 
   /*Subir imagen de perfil*/
   let imagenperfilDATA = null;
@@ -199,10 +167,8 @@ form_registro.addEventListener("submit", async (s) => {
       subir_perfil.style.border = "2px solid green";
     }
   }
-
   
 
-  
 
   /* ---------- Mensaje final ---------- */
   if (valido) {
