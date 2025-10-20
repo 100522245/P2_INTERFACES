@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', accionCerrarSesion);
 
 
 /* CODIGO PARA ULTIMOS CONSEJOS */
+import { campo_erroneo, campo_correcto, validarCampo } from './validaciones.js';
+
 const form_registro = document.getElementById("formulario-consejos");   /* Formulario */
 const titulo = document.getElementById("titulo");                       /* Titulo */
 const descripcion = document.getElementById("descripcion");             /* Descripcion */
@@ -100,40 +102,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 /* Validamos los campos */
 form_registro.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let valido = true;
 
-  /* Titulo */
-  const valor_titulo = titulo.value.trim();
-  if (valor_titulo.length < 15) {
-    error_titulo.textContent = "Mínimo 15 caracteres";
-    titulo.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_titulo.textContent = "";
-    titulo.style.border = "2px solid green";
-  }
+  /* Validar titulo */
+  if (!validarCampo(regex_titulo, titulo, "Mínimo 15 caracteres", error_titulo)) {
+      valido = false;
+    }
 
-  /* Descripcion */
-  const valor_descripcion = descripcion.value.trim();
-  if (valor_descripcion.length < 30) {
-    error_descripcion.textContent = "Mínimo 30 caracteres";
-    descripcion.style.border = "2px solid red";
-    valido = false;
-  } else {
-    error_descripcion.textContent = "";
-    descripcion.style.border = "2px solid green";
-  }
-
+  /* Validar descripcion */
+  if (!validarCampo(regex_descripcion, descripcion, "Mínimo 30 caracteres", error_descripcion)) {
+      valido = false;
+    }
+  
   if (valido) {
     /* Creamos nuevo consejo */
     const nuevoConsejo = {
-      titulo: valor_titulo,
-      descripcion: valor_descripcion
+      titulo: titulo.value.trim(),
+      descripcion: descripcion.value.trim()
     };
 
     /* Obtenemos todos los consejos */
@@ -170,7 +159,6 @@ form_registro.addEventListener("submit", (e) => {
     descripcion.style.border = "";
   }
 });
-
 
 
 /* CODIGO PARA DATOS DEL USUARIO */
