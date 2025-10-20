@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/* Control del inciio de sesion */
+/* Control del incio de sesion */
 const form_inicio = document.querySelector('.inicio_sesion');
 const usuario_inicio = document.querySelector('.login-usuario');
 const pass_inicio = document.querySelector('.login-password');
