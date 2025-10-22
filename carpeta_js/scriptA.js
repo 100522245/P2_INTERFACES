@@ -1,8 +1,8 @@
-/* =====================================================
-   VALIDACIÓN FORMULARIO - VERSIÓN A
-   ===================================================== */
+/* VALIDACIÓN FORMULARIO - VERSIÓN A (refactor parcial) */
 
-import { campo_erroneo, campo_correcto, validarCampo } from './validaciones.js';
+import { validarCampo } from './validaciones.js';
+
+/*REFERENCIAS A ELEMENTOS DEL DOM*/
 
 const form_registro = document.getElementById("form-registro");
 const nombre = document.getElementById("nombre");
@@ -28,13 +28,18 @@ const error_subir = document.getElementById("error-subir");
 const mensaje = document.getElementById("mensaje");
 
 
-/*Regex de validaciones*/
+/* Regex de validaciones */
+
 const regex_nombre = /^[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]{3,}$/;
 const regex_apellido = /^(?:[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]{3,})(?:\s+[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]{3,})+$/;
 const regex_correo = /^(?![.])(?!.*\.\.)[A-Za-z0-9._%+-]+@(?!-)[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,24}$/;
 const regex_login = /^[A-Za-z0-9]{5,}$/;
 const regex_password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=<>?{}[\]~])[A-Za-z\d!@#$%^&*()_\-+=<>?{}[\]~]{8,}$/;
 
+
+/* BLOQUE DE CONFIGURACIÓN INICIAL*/
+
+/* Bloque de prevención del Enter y limitación de fecha */
 form_registro.addEventListener("keydown", (evento) => {
   if (evento.key === "Enter") {
     evento.preventDefault();
@@ -48,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  /*Habilitar o deshabilitar la checkbox*/
+/*Habilitar o deshabilitar la checkbox*/
 boton_guardar.disabled = true;
 politica.addEventListener('change', () => { 
  if (politica.checked) {
@@ -59,8 +64,8 @@ politica.addEventListener('change', () => {
 });
 
 
-
 /* Función auxiliar para guardar imagenes */
+
 function readFileAsDataURL(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -69,32 +74,34 @@ function readFileAsDataURL(file) {
     reader.readAsDataURL(file);
   });
 }
- 
 
-/*VALIDACIÓN PRINCIPAL */
-form_registro.addEventListener("submit", async (s) => {
-  s.preventDefault();
+
+/* VALIDACIÓN PRINCIPAL (refactorizada) */
+
+form_registro.addEventListener("submit", async (e) => {
+  e.preventDefault();
   let valido = true;
 
-
-  /* ---------- Nombre ---------- */
-  if (!validarCampo(regex_nombre, nombre, "Mínimo 3 letras sin números", error_nombre)) {
+  /** Pequeña función interna para reducir repetición.
+   *  Hace lo mismo que tus bloques if individuales.
+   */
+  const validar = (regex, campo, mensajeError, contenedorError) => {
+    if (!validarCampo(regex, campo, mensajeError, contenedorError)) {
       valido = false;
     }
+  };
+
+  /*  Nombre  */
+  validar(regex_nombre, nombre, "Mínimo 3 letras sin números", error_nombre);
+
+  /*  Apellidos */
+  validar(regex_apellido, apellidos, "Mínimo dos palabras y 3 letras cada una", error_apellidos);
+
+  /*  Correo electrónico  */
+  validar(regex_correo, correo, "El correo no tiene el formato correcto", error_correo);
 
 
-  /* ---------- Apellidos ---------- */
-  if (!validarCampo(regex_apellido, apellidos, "Mínimo dos palabras y 3 letras cada una", error_apellidos)) {
-      valido = false;
-    }
-
-
-  /* ---------- Correo electrónico ---------- */
-  if (!validarCampo(regex_correo, correo, "El correo no tiene el formato correcto", error_correo)) {
-      valido = false;
-    }
-
-  if (!regex_correo.test(conf_correo) || conf_correo !== correo) {
+  if (!regex_correo.test(conf_correo.value) || conf_correo.value !== correo.value) {
     error_conf_correo.textContent = "Los correos deben coincidir y tener formato correcto";
     conf_correo.style.border = "2px solid red";
     valido = false;
@@ -104,11 +111,8 @@ form_registro.addEventListener("submit", async (s) => {
   }
 
 
-
-  /* ---------- Fecha de nacimiento ---------- */
+  /* Fecha de nacimiento  */
   const valor_fecha = fecha_nac.value.trim();
-
-  
   const fecha = new Date(valor_fecha);
   const hoy = new Date();
 
@@ -128,32 +132,25 @@ form_registro.addEventListener("submit", async (s) => {
     valido = false;
   } else {
     error_fecha.textContent = "";
+    fecha_nac.style.border = "2px solid green";
   }
 
 
-  /*Login */
-  if (!validarCampo(regex_login, login, "El nombre debe tener minimo 5 caracteres", error_login)) {
-      valido = false;
-    }
+  /* Login */
+  validar(regex_login, login, "El nombre debe tener minimo 5 caracteres", error_login);
+
+  /* Password  */
+  validar(regex_password, password, "8 carac de longitud, con 2 números, 1 especial, 1 mayúscula y 1 minúscula", error_password);
 
 
-  /*Password*/
-  if (!validarCampo(regex_password, password, "8 carac de longitud, con 2 números, 1 especial, 1 mayúscula y 1 minúscula", error_password)) {
-      valido = false;
-    }
-
-
-  /*Subir imagen de perfil*/
+  /* Subir imagen de perfil  */
   let imagenperfilDATA = null;
   const archivo = subir_perfil.files && subir_perfil.files[0];
-  if (archivo) {
-    imagenperfilDATA = await readFileAsDataURL(archivo);
-  }
 
   if (!archivo) {
-  error_subir.textContent = "Debes seleccionar una foto de perfil";
-  subir_perfil.style.border = "2px solid red";
-  valido = false;
+    error_subir.textContent = "Debes seleccionar una foto de perfil";
+    subir_perfil.style.border = "2px solid red";
+    valido = false;
   } else {
     const PERMITIDOS = ["image/webp", "image/png", "image/jpeg"];
     const okTipo = PERMITIDOS.includes(archivo.type);
@@ -165,13 +162,15 @@ form_registro.addEventListener("submit", async (s) => {
     } else {
       error_subir.textContent = "";
       subir_perfil.style.border = "2px solid green";
+      /** Carga del archivo de forma asíncrona */
+      imagenperfilDATA = await readFileAsDataURL(archivo);
     }
   }
-  
 
 
-  /* ---------- Mensaje final ---------- */
+  /*  Mensaje final  */
   if (valido) {
+    /*Se limpian los bordes*/
     nombre.style.border = "";
     apellidos.style.border = "";
     correo.style.border = "";
@@ -182,13 +181,16 @@ form_registro.addEventListener("submit", async (s) => {
 
     /* almacenamos las variables en un json */
     const usuario = {
-      nombre : valor_nombre,
-      apellidos : valor_apellidos,
-      correo : valor_correo,
-      fecha : valor_fecha, 
-      login : valor_login,
-      password : valor_password,
-      foto_perfil : imagenperfilDATA,
+      /** Se reemplazan las referencias antiguas (valor_nombre, valor_login, etc.)
+       *  por los valores reales de los inputs
+       */
+      nombre: nombre.value.trim(),
+      apellidos: apellidos.value.trim(),
+      correo: correo.value.trim(),
+      fecha: valor_fecha,
+      login: login.value.trim(),
+      password: password.value,
+      foto_perfil: imagenperfilDATA,
     };
 
     /* cargamos los usuarios que ya existen*/
@@ -198,12 +200,14 @@ form_registro.addEventListener("submit", async (s) => {
 
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-    /* guardamos el usuario de la sesiñon actual */
-    localStorage.setItem("usuario", JSON.stringify(usuario))
+    /* guardamos el usuario de la sesión actual */
+    localStorage.setItem("usuario", JSON.stringify(usuario));
 
     mensaje.textContent = "Registro completado correctamente";
     mensaje.style.color = "green";
     form_registro.reset();
+
+    /* Espera breve antes de redirigir */
     setTimeout(() => {
       window.location.href = "versionb.html";
     }, 1500);
