@@ -199,7 +199,7 @@ main {
 /* Banner grande de cabecera del contenido */
 .banner {
   position: relative;
-  background: url("../img/mountain.jpg") center/cover no-repeat;
+  background: url("../images/mountain.jpg") center/cover no-repeat;
   height: 12.5rem;
   border-radius: 0.75rem;
   display: flex;
@@ -1046,7 +1046,7 @@ body.versionc main {
   border-radius: 0.75rem;
   min-height: 9rem;
   padding: 1.2rem;
-  background-image: url('../img/AventuraHimalaya.png');
+  background-image: url('../images/AventuraHimalaya.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1059,7 +1059,7 @@ body.versionc main {
   border-radius: 0.75rem;
   min-height: 9rem;
   padding: 1.2rem;
-  background-image: url('../img/serengeti.webp');
+  background-image: url('../images/serengeti.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1072,7 +1072,7 @@ body.versionc main {
   border-radius: 0.75rem;
   min-height: 9rem;
   padding: 1.2rem;
-  background-image: url('../img/Atacama.jpg');
+  background-image: url('../images/Atacama.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
