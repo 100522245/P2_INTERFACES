@@ -4,7 +4,7 @@ Práctica 2 de la asignatura **Diseño de Interfaces de Usuario (UC3M)**.
 
 ---
 
-## 📌 Descripción
+## Descripción
 
 Proyecto enfocado en la arquitectura de información, maquetación adaptable multidispositivo y pruebas de usabilidad con múltiples versiones de navegación y visualización (Versiones A, B y C).
 
